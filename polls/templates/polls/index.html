@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index:Polls</title>
+        <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    </head>
+    <body>
+        <h2>Question Sets</h2>
+        {% if latest_question_list %}
+        <ul>
+            {# removing hardcoded urls #}
+            {# <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li> #}
+            {% for question in latest_question_list %}
+
+                <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </body>
+</html>
